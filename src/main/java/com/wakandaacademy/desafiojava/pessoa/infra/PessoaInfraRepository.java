@@ -1,5 +1,7 @@
 package com.wakandaacademy.desafiojava.pessoa.infra;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import com.wakandaacademy.desafiojava.pessoa.api.repository.PessoaRepository;
@@ -20,6 +22,13 @@ public class PessoaInfraRepository implements PessoaRepository {
 		pessoaSpringDataJPARepository.save(pessoa);
 		log.info("[finaliza] PessoaInfraRepository - salva");
 		return pessoa;
+	}
+
+	@Override
+	public List<Pessoa> buscaTodasPessoas() {
+		log.info("[inicia] PessoaInfraRepository - buscaTodasPessoas");
+		log.info("[finaliza] PessoaInfraRepository - buscaTodasPessoas");
+		return null;
 	}
 
 }
