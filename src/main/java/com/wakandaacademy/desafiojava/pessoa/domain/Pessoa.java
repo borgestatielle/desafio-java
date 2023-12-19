@@ -15,6 +15,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import com.wakandaacademy.desafiojava.endereco.domain.Endereco;
+import com.wakandaacademy.desafiojava.pessoa.api.PessoaRequest;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -33,12 +34,12 @@ public class Pessoa {
 	@NotNull
 	private LocalDate dataNascimento;
 	@OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL)
-	private List<Endereco> enderecos;
+	private List<Endereco> enderecos;	
 
-	public Pessoa(@NotBlank String nomeCompleto, @NotNull LocalDate dataNascimento, List<Endereco> enderecos) {
-		this.nomeCompleto = nomeCompleto;
-		this.dataNascimento = dataNascimento;
-		this.enderecos = enderecos;
+	public Pessoa(PessoaRequest pessoaRequest) {
+		this.nomeCompleto = pessoaRequest.getNomeCompleto();
+		this.dataNascimento = pessoaRequest.getDataNascimento();
+		this.enderecos = pessoaRequest.getEnderecos();
 	}
-
+	
 }
