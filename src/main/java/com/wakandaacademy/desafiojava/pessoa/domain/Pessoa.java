@@ -7,7 +7,10 @@ import java.util.UUID;
 import com.wakandaacademy.desafiojava.endereco.domain.Endereco;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
@@ -21,6 +24,8 @@ import lombok.NoArgsConstructor;
 @Entity
 public class Pessoa {
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id", updatable = false, unique = true, nullable = false)
     private UUID idPessoa;
 	@NotBlank
     private String nomeCompleto;
@@ -31,7 +36,6 @@ public class Pessoa {
 	
     public Pessoa(@NotBlank String nomeCompleto, @NotNull LocalDate dataNascimento,
 			List<Endereco> enderecos) {
-    	this.idPessoa = UUID.randomUUID();
 		this.nomeCompleto = nomeCompleto;
 		this.dataNascimento = dataNascimento;
 		this.enderecos = enderecos;
