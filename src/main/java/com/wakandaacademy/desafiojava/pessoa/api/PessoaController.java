@@ -1,6 +1,7 @@
 package com.wakandaacademy.desafiojava.pessoa.api;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,7 +15,7 @@ import lombok.extern.log4j.Log4j2;
 @RequiredArgsConstructor
 public class PessoaController implements PessoaAPI {
 	private final PessoaService pessoaService;
-	
+
 	@Override
 	public PessoaResponse postPessoa(PessoaRequest pessoaRequest) {
 		log.info("[inicia] PessoaController - postPessoa");
@@ -29,6 +30,14 @@ public class PessoaController implements PessoaAPI {
 		List<PessoaListResponse> pessoas = pessoaService.buscaTodasPessoas();
 		log.info("[finaliza] PessoaController - getTodasPessoas");
 		return pessoas;
+	}
+
+	@Override
+	public PessoaDetalhadoResponse getPessoaAtravesId(UUID idPessoa) {
+		log.info("[inicia] PessoaController - getPessoaAtravesId");
+		log.info("[idPessoa] {}", idPessoa);
+		log.info("[finaliza] PessoaController - getPessoaAtravesId");
+		return null;
 	}
 
 }

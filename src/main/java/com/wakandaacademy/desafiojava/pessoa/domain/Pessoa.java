@@ -29,9 +29,9 @@ public class Pessoa {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", updatable = false, unique = true, nullable = false)
 	private UUID idPessoa;
-	@NotBlank
+	@NotBlank(message = "O noome não pode estar em branco!")
 	private String nomeCompleto;
-	@NotNull
+	@NotNull(message = "Campo obrigatório!")
 	private LocalDate dataNascimento;
 	@OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL)
 	private List<Endereco> enderecos;	
