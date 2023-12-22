@@ -1,9 +1,11 @@
 package com.wakandaacademy.desafiojava.pessoa.service;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
+import com.wakandaacademy.desafiojava.pessoa.api.PessoaDetalhadoResponse;
 import com.wakandaacademy.desafiojava.pessoa.api.PessoaListResponse;
 import com.wakandaacademy.desafiojava.pessoa.api.PessoaRequest;
 import com.wakandaacademy.desafiojava.pessoa.api.PessoaResponse;
@@ -35,6 +37,13 @@ public class PessoaApplicationService implements PessoaService {
 		List<Pessoa> pessoas = pessoaRepository.buscaTodasPessoas();
 		log.info("[finaliza] PessoaApplicationService - buscaTodasPessoas");
 		return PessoaListResponse.converte(pessoas);
+	}
+
+	@Override
+	public PessoaDetalhadoResponse buscaPessoaAtravesId(UUID idPessoa) {
+		log.info("[inicia] PessoaApplicationService - buscaPessoaAtravesId");
+		log.info("[finaliza] PessoaApplicationService - buscaPessoaAtravesId");
+		return null;
 	}
 
 }
