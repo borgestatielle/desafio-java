@@ -1,6 +1,7 @@
 package com.wakandaacademy.desafiojava.pessoa.infra;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.stereotype.Repository;
 
@@ -30,6 +31,15 @@ public class PessoaInfraRepository implements PessoaRepository {
 		List<Pessoa> todasPessoas = pessoaSpringDataJPARepository.findAll();
 		log.info("[finaliza] PessoaInfraRepository - buscaTodasPessoas");
 		return todasPessoas;
+	}
+
+	@Override
+	public Pessoa buscaPessoaAtravesId(UUID idPessoa) {
+		log.info("[inicia] PessoaInfraRepository - buscaPessoaAtravesId");
+		Pessoa pessoa = pessoaSpringDataJPARepository.findById(idPessoa)
+				.orElseThrow(() -> new RuntimeException("Pessoa não encontrada!"));
+		log.info("[finaliza] PessoaInfraRepository - buscaPessoaAtravesId");
+		return pessoa;
 	}
 
 }
